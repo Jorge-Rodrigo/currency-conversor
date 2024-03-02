@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./styles/app.style.scss";
+import Coin from "./assets/coin.png";
 
 function App() {
   const [amount, setAmount] = useState(0);
@@ -41,25 +42,28 @@ function App() {
   };
 
   return (
-    <div className="converter-container">
-      <h1>Conversor de Moeda</h1>
-      <div>
+    <div className="container">
+      <h1>Conversor de Moedas</h1>
+      <div className="conversor">
+        <div className="select-div">
+          <select value={currency} onChange={handleCurrencyChange}>
+            <option value="BRL">Real Brasileiro</option>
+            <option value="USD">Dólar Americano</option>
+            <option value="EUR">Euro</option>
+          </select>{" "}
+          <img src={Coin} alt="moeda" />
+          <select value={currencyTarget} onChange={handleCurrencyChangeTarget}>
+            <option value="USD">Dólar Americano</option>
+            <option value="BRL">Real Brasileiro</option>
+            <option value="EUR">Euro</option>
+          </select>
+        </div>
         <input
           type="number"
           value={amount}
           onChange={handleAmountChange}
           placeholder="Digite o valor"
         />
-        <select value={currency} onChange={handleCurrencyChange}>
-          <option value="BRL">Real Brasileiro</option>
-          <option value="USD">Dólar Americano</option>
-          <option value="EUR">Euro</option>
-        </select>{" "}
-        <select value={currencyTarget} onChange={handleCurrencyChangeTarget}>
-          <option value="USD">Dólar Americano</option>
-          <option value="BRL">Real Brasileiro</option>
-          <option value="EUR">Euro</option>
-        </select>
         <button onClick={convertCurrency}>Converter</button>
       </div>
       <div>
